@@ -1,7 +1,7 @@
 cms-app
 =======
 
-This repository contains a subset of the source code for a Content Management System (CMS) application created for a school assignment. It was written in C# using the ASP.NET MVC framework and Razor templating, and the full application was deployed via Microsoft Azure.
+This repository contains a subset of the source code for a Content Management System (CMS) application created for a school assignment. It was written in C# using the ASP.NET MVC framework and Razor templating, and the full application was deployed via Microsoft Azure. I received a grade of 98/100 for this assignment.
 
 The finished application is located at [cms-app-nyu.azurewebsites.net](http://cms-app-nyu.azurewebsites.net/). It was created by a three person team including me and two others. This repository contains only the source code files that were written solely by me. It does not contain the source code files that were written by my teammates.
 
