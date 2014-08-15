@@ -1,0 +1,31 @@
+﻿@model CMS_App.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Deactivate User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // created by Charles Drews
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Are you sure you want to deactivate this user?</h3>
+
+<div>
+    @Html.Partial("_UserDetailPartial", Model)
+</div>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deactivate" class="btn btn-lg btn-danger" />
+        </div>
+    }
+</div>
+
+<p>
+    @Html.ActionLink("Back to Details", "Details", "User", new { id = Model.User.Id }) |
+    @Html.ActionLink("Back to List", "Index", "User")
+</p>

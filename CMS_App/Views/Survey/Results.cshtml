@@ -1,0 +1,43 @@
+﻿@model CMS_App.Models.ResultsViewModel
+
+@{
+    ViewBag.Title = "Results";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // created by Charles Drews
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Survey</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Course Name:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Course.Name)
+        </dd>
+    </dl>
+        
+    @foreach (var questionViewModel in Model.QuestionViewModels)
+    {
+        <dl class="dl-horizontal">
+            <dt>Question:</dt>
+            <dd>@Html.DisplayFor(model => questionViewModel.Question.Text)</dd>
+
+            <dt>Number of Responses:</dt>
+            <dd>@Html.DisplayFor(model => questionViewModel.CountOfResponses)</dd>
+
+            <dt>Sum of Responses:</dt>
+            <dd>@Html.DisplayFor(model => questionViewModel.SumOfResponses)</dd>
+
+            <dt>Average Rating:</dt>
+            <dd>@Html.DisplayFor(model => questionViewModel.AverageOfResponses)</dd>
+        </dl>
+    }
+</div>
+<p>
+    @Html.ActionLink("Back to Course Details", "Details", "Course", new { id = Model.Course.Id }, Model) |
+    @Html.ActionLink("Back to Course List", "Index", "Course")
+</p>

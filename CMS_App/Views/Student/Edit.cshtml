@@ -1,0 +1,28 @@
+﻿@model CMS_App.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Edit Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // created by Charles Drews
+}
+
+<h2>@ViewBag.Title</h2>
+
+@Html.Partial("_UserEditPartial", Model)
+
+<div>
+    @if (Model.User.IsActive)
+    {
+        @Html.ActionLink("Deactivate", "Deactivate", "Student", new { id = Model.User.Id }) <span> | </span>
+    }
+    else
+    {
+        @Html.ActionLink("Activate", "Activate", "Student", new { id = Model.User.Id }) <span> | </span>
+    }
+    @Html.ActionLink("Back to Details", "Details", "Student", new { id = Model.User.Id }) |
+    @Html.ActionLink("Back to List", "Index", "Student")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

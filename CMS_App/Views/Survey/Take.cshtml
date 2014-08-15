@@ -1,0 +1,71 @@
+﻿@model CMS_App.Models.SurveyViewModel
+
+@{
+    ViewBag.Title = "Take";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // created by Charles Drews
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm("Take", "Survey", new { id = Model.CourseId }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Survey</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.CourseId)
+        @Html.HiddenFor(model => model.EnrollmentId)
+        @Html.HiddenFor(model => model.CountOfQuestions)
+
+        @{int questionIndex = 0;}
+        @foreach (var question in Model.Survey)
+        {
+            <div class="form-group">
+                <label class="control-label col-md-2">@question.Key.Text</label>
+                <div class="col-md-10">
+                    @for (int optionIndex = 0; optionIndex < question.Value.Count(); optionIndex++)
+                    {
+                        <div class="radio">
+                            @if (question.Value[optionIndex].Selected)
+                            {
+                                @Html.RadioButtonFor(model => model.SelectedResponseOptions[questionIndex].ResponseOptionId,
+                                                     question.Value[optionIndex].ResponseOption.Id, new { @checked="true" })
+                            }
+                            else
+                            {
+                                <!--Don't use attribute checked="false" becase that does the same as
+                                    checkec="true"! Instead don't add the checked attribute at all-->
+                                @Html.RadioButtonFor(model => model.SelectedResponseOptions[questionIndex].ResponseOptionId,
+                                                     question.Value[optionIndex].ResponseOption.Id)
+                            }
+                            
+                            @Html.DisplayFor(model => question.Value[optionIndex].ResponseOption.Text)
+                        </div>
+                    }
+                    @Html.ValidationMessageFor(model => model.SelectedResponseOptions[questionIndex].ResponseOptionId,
+                                               "", new { @class = "text-danger" })
+                </div>
+            </div>
+            questionIndex++;
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Course Details", "Details", "Course", new { id = Model.CourseId }, Model) |
+    @Html.ActionLink("Back to Course List", "Index", "Course", null, Model)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

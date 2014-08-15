@@ -1,0 +1,29 @@
+﻿@model CMS_App.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Activate Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // created by Charles Drews
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Are you sure you want to activate this student?</h3>
+
+<div>
+    @Html.Partial("_UserDetailPartial", Model)
+</div>
+
+<div>
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Activate" class="btn btn-lg btn-danger" />
+        </div>
+    }
+</div>
+<p>
+    @Html.ActionLink("Back to Details", "Details", "Student", new { id = Model.User.Id }) |
+    @Html.ActionLink("Back to List", "Index", "Student")
+</p>

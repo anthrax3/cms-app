@@ -1,0 +1,76 @@
+﻿@model CMS_App.Models.UserViewModel
+
+@{
+    //created by Charles Drews
+}
+
+<div>
+    <hr />
+
+    <img data-src="holder.js/200x200" class="img-responsive img-rounded" alt="Responsive image" src=@Model.PhotoUrl style="width: 200px; height: 200px;">
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Role)
+        </dd>
+
+        @if (Model.User.Role.ToString() == "student")
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Majors)
+            </dt>
+
+            <dd>
+                @{int i = 0;}
+                @foreach (var major in Model.Majors)
+                {
+                    if (i > 0)
+                    {
+                        <span> / </span>
+                    }
+                    @Html.DisplayFor(majorItem => major)
+                    i++;
+                }
+            </dd>
+        }
+
+        @if (User.IsInRole("admin"))
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.User.DateAdded)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.DateAdded)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.User.DateUpdated)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.DateUpdated)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.User.IsActive)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.User.IsActive)
+            </dd>
+        }
+    </dl>
+</div>

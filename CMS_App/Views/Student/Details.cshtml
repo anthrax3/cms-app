@@ -1,0 +1,34 @@
+﻿@model CMS_App.Models.StudentDetailViewModel
+
+@{
+    ViewBag.Title = "Student Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // created by Charles Drews
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    @Html.Partial("_UserDetailPartial", Model.UserViewModel)
+</div>
+
+<div>
+    <h4>Current Courses</h4>
+    @Html.Partial("_CourseListPartial", Model.CourseHelpers)
+</div>
+
+<p>
+    @if (User.IsInRole("admin"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.UserViewModel.User.Id }) <span> | </span>
+        if (Model.UserViewModel.User.IsActive)
+        {
+            @Html.ActionLink("Deactivate", "Deactivate", "User", new { id = Model.UserViewModel.User.Id }, null) <span> | </span>
+        }
+        else
+        {
+            @Html.ActionLink("Activate", "Activate", "User", new { id = Model.UserViewModel.User.Id }, null) <span> | </span>
+        }
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>

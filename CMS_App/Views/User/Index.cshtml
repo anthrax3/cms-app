@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CMS_App.Models.UserViewModel>
+
+@{
+    ViewBag.Title = "Active Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // created by Charles Drews
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h4 style="float:right">
+    @Html.ActionLink("View Inactive Users", "Inactive", "User")
+</h4>
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.User.DateAdded)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.DateUpdated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.IsActive)
+        </th>
+        
+        <th>
+            @Html.DisplayName("Name")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.DateAdded)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.DateUpdated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.IsActive)
+        </td>
+        <td>
+            @Html.ActionLink(item.User.FirstName + " " + item.User.LastName, "Details",
+                             "User", new { id = item.User.Id}, null)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "User", new { id = item.User.Id }, null) |
+            @Html.ActionLink("Deactivate", "Deactivate", "User", new { id = item.User.Id }, null)
+        </td>
+    </tr>
+}
+</table>

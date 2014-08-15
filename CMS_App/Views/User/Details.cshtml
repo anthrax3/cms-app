@@ -1,0 +1,26 @@
+﻿@model CMS_App.Models.UserViewModel
+
+@{
+    ViewBag.Title = "User Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // created by Charles Drews
+}
+
+<h2>User Details</h2>
+
+<div>
+    @Html.Partial("_UserDetailPartial", Model)
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.User.Id }) |
+    @if (Model.User.IsActive)
+    {
+        @Html.ActionLink("Deactivate", "Deactivate", new { id = Model.User.Id }) <span> | </span>
+    }
+    else
+    {
+        @Html.ActionLink("Activate", "Activate", new { id = Model.User.Id }) <span> | </span>
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>
