@@ -11,7 +11,7 @@ This application manages educational content. Instructors can create courses and
 
 ###My Contributions to the Application
 
-I was responsible for the portions of the project that manager users (including creating, updating, displaying users) and the survey portion (students rate course via survey; instructors and admins view results).
+I was responsible for the portions of the project that manage users (including creating, updating, displaying users) and the survey portion (students rate course via survey; instructors and admins view results).
 
 First, I made the .NET Identity system work with our own User table in our Entity Framework (EF) database. I modified the auto-generated `AccountController.Register` method & corresponding view to gather the necessary input and create a User instance in our EF database corresponding to the Identity user instance created in the *AspNetUsers* table. I also set up the *Web.config* file to make sure both the Identity system and the EF system were using the same database, which we created in Azure. This way we didn't have to struggle with deploying our database(s) since everything was in one database that was in the cloud all along.
 
