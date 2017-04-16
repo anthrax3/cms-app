@@ -1,15 +1,15 @@
-cms-app
+# cms-app
 =======
 
 This repository contains a subset of the source code for a Content Management System (CMS) application created for a school assignment. It was written in C# using the ASP.NET MVC framework and Razor templating, and the full application was deployed via Microsoft Azure. I received a grade of 98/100 for this assignment.
 
 The finished application is located at [cms-app-nyu.azurewebsites.net](http://cms-app-nyu.azurewebsites.net/). It was created by a three person team including me and two others. This repository contains only the source code files that were written solely by me. It does not contain the source code files that were written by my teammates.
 
-###Application Overview
+### Application Overview
 
 This application manages educational content. Instructors can create courses and post materials to courses. Students can enroll in courses and view course materials. The application admin can edit users & courses, deactivate & activate users and courses, etc. Please feel free to register as a new user (you can use a fake name & email address) and explore the application.
 
-###My Contributions to the Application
+### My Contributions to the Application
 
 I was responsible for the portions of the project that manage users (including creating, updating, displaying users) and the survey portion (students rate course via survey; instructors and admins view results).
 
