@@ -1,5 +1,4 @@
 # cms-app
-=======
 
 This repository contains a subset of the source code for a Content Management System (CMS) application created for a school assignment. It was written in C# using the ASP.NET MVC framework and Razor templating, and the full application was deployed via Microsoft Azure. I received a grade of 98/100 for this assignment.
 
